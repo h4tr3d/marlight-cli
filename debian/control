@@ -1,0 +1,28 @@
+Source: marlight-cli
+Section: utils
+Priority: optional
+Maintainer: Alexander Drozdov <adrozdoff@gmail.com>
+Build-Depends: debhelper (>= 9), linux-libc-dev, cmake
+Standards-Version: 3.9.5
+Homepage: http://madrobots.ru/catalog/ustroystva_upravlyaemye_so_smartfona/marlight-wifi-lampochka/
+
+Package: libmarlight
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Marlight control library
+ Full control for Marlight WiFi router
+
+Package: libmarlight-dev
+Section: libdevel
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmarlight (= ${binary:Version})
+Description: Development files for Marlight control library
+  Development files for Marlight controll library
+
+Package: marlight-cli
+Section: utils
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libmarlight (= ${binary:Version})
+Description: Marlight CLI control tool
+  CLI tool to control Marlight WiFi router
