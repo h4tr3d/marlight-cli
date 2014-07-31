@@ -11,6 +11,7 @@
 #include <netinet/in.h>
 #include <netdb.h>
 
+#define MARLIGHT_SOURCE
 #include "marlight.h"
 
 // ----------------------------- FIRST PAGE IPHONE APPLICATION  -----------------------------------
