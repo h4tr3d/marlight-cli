@@ -30,10 +30,10 @@ struct Command
 
 
 map<string, Command> commands{
-    {"lamp_on", {
+    {"channel_on", {
             1,
-            "<lamp_number>",
-            "lamp number 1..4",
+            "<channel_number>",
+            "lamp channel number 1..4",
             [](int argc, char **argv, int cmdIdx, MarlightCtx* ctx){
                 string arg(argv[cmdIdx+1]);
                 int lamp = stoi(arg);
@@ -43,13 +43,13 @@ map<string, Command> commands{
                     exit(1);
                 }
 
-                marlight_lamp_on(ctx, static_cast<MarlightLamp>(lamp));
+                marlight_channel_on(ctx, static_cast<MarlightChannel>(lamp));
             }
         }},
-    {"lamp_off", {
+    {"channel_off", {
             1,
-            "<lamp_number>",
-            "lamp number 1..4",
+            "<channel_number>",
+            "lamp channel number 1..4",
             [](int argc, char **argv, int cmdIdx, MarlightCtx* ctx){
                 string arg(argv[cmdIdx+1]);
                 int lamp = stoi(arg);
@@ -59,7 +59,7 @@ map<string, Command> commands{
                     exit(1);
                 }
 
-                marlight_lamp_off(ctx, static_cast<MarlightLamp>(lamp));
+                marlight_channel_off(ctx, static_cast<MarlightChannel>(lamp));
             }
         }},
     {"rgb_set_color", {
@@ -276,6 +276,10 @@ int main(int argc, char **argv)
         cerr << "Can't alloc marlight context" << endl;
         return 1;
     }
+
+    // Add compat alias to lamp_on/off
+    commands["lamp_on"]  = commands["channel_on"];
+    commands["lamp_off"] = commands["channel_off"];
 
     for (int i = 1; i < argc; ++i)
     {

@@ -7,11 +7,18 @@ extern "C" {
 #endif
 
 typedef enum {
-    LAMP_1,
-    LAMP_2,
-    LAMP_3,
-    LAMP_4
-} MarlightLamp;
+    CHANNEL_1 = 1,
+    CHANNEL_2,
+    CHANNEL_3,
+    CHANNEL_4,
+    // Compat
+    LAMP_1 = CHANNEL_1,
+    LAMP_2 = CHANNEL_2,
+    LAMP_3 = CHANNEL_3,
+    LAMP_4 = CHANNEL_4
+} MarlightChannel;
+
+typedef MarlightChannel MarlightLamp;
 
 typedef struct MarlightCtx MarlightCtx;
 
@@ -22,8 +29,11 @@ void         marlight_init_context(MarlightCtx *ctx, const char *host, uint16_t 
 
 int          marlight_send_custom_message(MarlightCtx *ctx, const char *message, size_t size);
 
-int          marlight_lamp_on(MarlightCtx *ctx, MarlightLamp lamp);
-int          marlight_lamp_off(MarlightCtx *ctx, MarlightLamp lamp);
+int          marlight_lamp_on(MarlightCtx *ctx, MarlightLamp lamp) __attribute__((deprecated("Use marlight_channel_on() insted")));
+int          marlight_lamp_off(MarlightCtx *ctx, MarlightLamp lamp) __attribute__((deprecated("Use marlight_channel_off() insted")));
+
+int          marlight_channel_on(MarlightCtx *ctx, MarlightChannel channel);
+int          marlight_channel_off(MarlightCtx *ctx, MarlightChannel channel);
 
 int          marlight_all_on(MarlightCtx *ctx);
 int          marlight_all_off(MarlightCtx *ctx);

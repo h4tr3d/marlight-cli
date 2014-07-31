@@ -151,35 +151,13 @@ int marlight_send_custom_message(MarlightCtx *ctx, const char *message, size_t s
 
 int marlight_lamp_on(MarlightCtx *ctx, MarlightLamp lamp)
 {
-    switch (lamp)
-    {
-        case LAMP_1:
-            return send_message(ctx, ON_1, sizeof(ON_1));
-        case LAMP_2:
-            return send_message(ctx, ON_2, sizeof(ON_2));
-        case LAMP_3:
-            return send_message(ctx, ON_3, sizeof(ON_3));
-        case LAMP_4:
-            return send_message(ctx, ON_4, sizeof(ON_4));
-    }
-    return -1;
+    return marlight_channel_on(ctx, (MarlightChannel)lamp);
 }
 
 
 int marlight_lamp_off(MarlightCtx *ctx, MarlightLamp lamp)
 {
-    switch (lamp)
-    {
-        case LAMP_1:
-            return send_message(ctx, OFF_1, sizeof(OFF_1));
-        case LAMP_2:
-            return send_message(ctx, OFF_2, sizeof(OFF_2));
-        case LAMP_3:
-            return send_message(ctx, OFF_3, sizeof(OFF_3));
-        case LAMP_4:
-            return send_message(ctx, OFF_4, sizeof(OFF_4));
-    }
-    return -1;
+    return marlight_channel_off(ctx, (MarlightChannel)lamp);
 }
 
 int marlight_all_on(MarlightCtx *ctx)
@@ -316,4 +294,38 @@ int marlight_preset_recreation(MarlightCtx *ctx, uint8_t r, uint8_t g, uint8_t b
     buf[2] = g;
     buf[3] = b;
     return SEND_MESSAGE(ctx, buf);
+}
+
+
+int marlight_channel_on(MarlightCtx *ctx, MarlightChannel channel)
+{
+    switch (channel)
+    {
+        case CHANNEL_1:
+            return send_message(ctx, ON_1, sizeof(ON_1));
+        case CHANNEL_2:
+            return send_message(ctx, ON_2, sizeof(ON_2));
+        case CHANNEL_3:
+            return send_message(ctx, ON_3, sizeof(ON_3));
+        case CHANNEL_4:
+            return send_message(ctx, ON_4, sizeof(ON_4));
+    }
+    return -1;
+}
+
+
+int marlight_channel_off(MarlightCtx *ctx, MarlightChannel channel)
+{
+    switch (channel)
+    {
+        case CHANNEL_1:
+            return send_message(ctx, OFF_1, sizeof(OFF_1));
+        case CHANNEL_2:
+            return send_message(ctx, OFF_2, sizeof(OFF_2));
+        case CHANNEL_3:
+            return send_message(ctx, OFF_3, sizeof(OFF_3));
+        case CHANNEL_4:
+            return send_message(ctx, OFF_4, sizeof(OFF_4));
+    }
+    return -1;
 }
