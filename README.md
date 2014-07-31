@@ -31,3 +31,20 @@ cp lib/*.h /usr/local/include/marlight/
 cp build/marlight-cli /usr/local/bin/
 ~~~
 
+
+Run
+---
+
+Simple run 'marlight-cli' without parameters or with '--help'
+
+By default all commands work with Channel 1. To select channel for configuration run
+~~~
+marlight-cli --host HOST channel_on #
+~~~
+
+where # - is a channel number between 1..4
+
+To deselect channel from configuration run:
+~~~
+marlight-cli --host HOST channel_off #
+~~~
