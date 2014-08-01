@@ -32,6 +32,38 @@ cp build/marlight-cli /usr/local/bin/
 ~~~
 
 
+
+Binary
+------
+
+Ubuntu: https://launchpad.net/~adrozdoff/+archive/ubuntu/marlight
+~~~
+sudo add-apt-repository ppa:adrozdoff/marlight
+sudo apt-get update
+sudo apt-get install marlight-cli
+~~~
+
+Optionaly you can install development files:
+~~~
+sudo apt-get install libmarlight-dev
+~~~
+
+Also you can try without guarantees install .deb packages on Debian and other systems
+differ Ubuntu Trusty:
+- i386:
+  - https://launchpad.net/~adrozdoff/+archive/ubuntu/marlight/+files/marlight-cli_0.1.0-1_i386.deb
+  - https://launchpad.net/~adrozdoff/+archive/ubuntu/marlight/+files/libmarlight_0.1.0-1_i386.deb
+  - https://launchpad.net/~adrozdoff/+archive/ubuntu/marlight/+files/libmarlight-dev_0.1.0-1_i386.deb
+- x86_64:
+  - https://launchpad.net/~adrozdoff/+archive/ubuntu/marlight/+files/marlight-cli_0.1.0-1_amd64.deb
+  - https://launchpad.net/~adrozdoff/+archive/ubuntu/marlight/+files/libmarlight_0.1.0-1_amd64.deb
+  - https://launchpad.net/~adrozdoff/+archive/ubuntu/marlight/+files/libmarlight-dev_0.1.0-1_amd64.deb
+
+TODO:
+- Windows MinGW build
+- Windows MSVS builds
+- Linux static build with static lib in tgz form
+
 Run
 ---
 
@@ -48,3 +80,5 @@ To deselect channel from configuration run:
 ~~~
 marlight-cli --host HOST channel_off #
 ~~~
+
+
