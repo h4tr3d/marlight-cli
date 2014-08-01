@@ -31,6 +31,9 @@ cp lib/*.h /usr/local/include/marlight/
 cp build/marlight-cli /usr/local/bin/
 ~~~
 
+Build on Debian/Ubuntu/LinuxMint:
+- Run dpkg-buildpackage from source tree root: dpkg-buildpackage -us -uc -b
+- Install packages: sudo dpkg -i ../*.deb
 
 
 Binary
